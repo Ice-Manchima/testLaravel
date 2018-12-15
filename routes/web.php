@@ -11,47 +11,7 @@
 |
 */
 
-//Route::get('/', function () {
-//
-//    $task = [
-//        'Contact',
-//        'About',
-//    ];
-////    return view('welcome', [
-////        'tasks' => $task
-////    ]);
-//
-////    Similar
-////    return view('welcome')->withTasks($task);
-//
-//
-//    return view('welcome')->withTasks($task);
-//});
-
-//Similar
 Route::get('/', 'LoanController@index');
-
-
-//Route::get('/Contact', function (){
-//    return view('contact');
-//});
-
-//Similar
-Route::get('/About', 'TestController@about');
-
-//Route::get('/About', function (){
-//    return view('about');
-//});
-
-//Similar
-Route::get('/Contact', 'TestController@contact');
-
-
-Route::get('/Project', 'ProjectsController@index');
-Route::get('/Project/create', 'ProjectsController@create');
-
-
-Route::post('/Project', 'ProjectsController@store');
 
 //Loan
 Route::resource('loan', 'LoanController');

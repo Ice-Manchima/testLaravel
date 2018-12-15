@@ -6,19 +6,6 @@
 @section('content')
 
     <div class="container">
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div><br />
-        @elseif(!empty(session('success')))
-            <div class="alert alert-success">
-                {{session('success')}}
-            </div>
-        @endif
 
         @if($mode == "create")
             <h1>Create Loan</h1>
@@ -36,7 +23,7 @@
 
                     <div class="col-sm-3">
                         <div class="input-group row">
-                            <input type="text" class="form-control" id="amount" name="amount" value="@if($mode=="edit") {{$loan->amount}} @endif"/>
+                            <input type="text" class="form-control" id="amount" name="amount" value="@if(old('amount')<>""){{old('amount')}}@elseif($mode=="edit"){{$loan->amount}}@endif"/>
                             <div class="input-group-append">
                                 <span class="input-group-text">฿</span>
                             </div>
@@ -49,7 +36,7 @@
 
                     <div class="col-sm-3">
                         <div class="input-group row">
-                            <input type="text" class="form-control" id="term" name="term" value="@if($mode=="edit") {{$loan->term}} @endif"/>
+                            <input type="text" class="form-control" id="term" name="term" value="@if(old('term')<>""){{old('term')}}@elseif($mode=="edit"){{$loan->term}}@endif"/>
                             <div class="input-group-append">
                                 <span class="input-group-text">Years</span>
                             </div>
@@ -62,7 +49,7 @@
 
                     <div class="col-sm-3">
                         <div class="input-group row">
-                            <input type="text" class="form-control" id="interest_rate" name="interest_rate" value="@if($mode=="edit") {{$loan->interest_rate}} @endif"/>
+                            <input type="text" class="form-control" id="interest_rate" name="interest_rate" value="@if(old('interest_rate')<>""){{old('interest_rate')}}@elseif($mode=="edit"){{$loan->interest_rate}}@endif"/>
                             <div class="input-group-append">
                                 <span class="input-group-text">%</span>
                             </div>

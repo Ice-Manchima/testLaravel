@@ -5,19 +5,6 @@
 
 @section('content')
     <div class="container">
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div><br />
-        @elseif(!empty(session('success')))
-            <div class="alert alert-success">
-                {{session('success')}}
-            </div>
-        @endif
 
         <h1>All Loans</h1>
         <div class="container">
@@ -55,6 +42,6 @@
                 @endforeach
                 </tbody>
             </table>
-            {{--{{ $loans->links() }}--}}
+            {{ $loans->links() }}
             <div>
 @endsection
