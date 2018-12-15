@@ -33,8 +33,8 @@ class LoanController extends Controller
     public function index()
     {
         //
-        $loans = Loan::all();
-        return view('Loan.index')->withLoans($loans);
+        $loans = Loan::orderBy('id', 'desc')->paginate(15);
+        return view('Loan.index', compact('loans'));
     }
 
     /**
