@@ -13,12 +13,12 @@ class CreateLoansTable extends Migration
      */
     public function up()
     {
-        Schema::create('loan', function (Blueprint $table) {
+        Schema::create('loans', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('amount');
             $table->integer('term');
             $table->float('interest_rate',5,2);
-            $table->string('start_date');
+            $table->date('start_date');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -31,6 +31,6 @@ class CreateLoansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('loan');
+        Schema::dropIfExists('loans');
     }
 }
