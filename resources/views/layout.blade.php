@@ -38,6 +38,10 @@
             <div class="alert alert-success">
                 {{session('successfully')}}
             </div>
+        @elseif(!empty(session('warning')))
+            <div class="alert alert-warning">
+                {{session('warning')}}
+            </div>
         @endif
     </div>
 
