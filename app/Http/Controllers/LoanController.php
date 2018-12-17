@@ -65,7 +65,7 @@ class LoanController extends Controller
         $loan->amount = request('amount');
         $loan->term = request('term');
         $loan->interest_rate = request('interest_rate');
-        $loan->start_date = request('year').'-'.request('month').'-01';
+        $loan->start_date = request('year').'-'.request('month');
         $loan->save();
 
         return redirect('/loan/'.$loan->id)->with('successfully','The loan has been created successfully.');
@@ -168,7 +168,12 @@ class LoanController extends Controller
         $loan->amount = request('amount');
         $loan->term = request('term');
         $loan->interest_rate = request('interest_rate');
-        $loan->start_date = request('year').'-'.request('month').'-01';
+        $loan->start_date = request('year').'-'.request('month');
+
+        if(!$loan->isDirty()){
+            return back()->with('warning', 'No data changes.');
+        }
+
         $loan->update();
 
         return redirect('/loan/'.$loan->id)->with('successfully', 'The loan has been updated successfully.');
